@@ -1,0 +1,25 @@
+.awards {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.747)), url("../../assets/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.awards .icon {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  margin: auto;
+  margin-top: 50px;
+  background: rgba(255, 255, 255, 0.356);
+  border-radius: 4% 50%;
+  font-size: 32px;
+  color: #ffffff;
+}
+
