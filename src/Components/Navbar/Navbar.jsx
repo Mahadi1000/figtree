@@ -1,35 +1,44 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo2.png";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
+import { FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
+
+import Button from "../../Components/Button/Button";
 const Navbar = () => {
+  const handleWhatsApp = () => {
+    window.open(`https://wa.me/${+97455118686}`, "_blank");
+  };
+
   const isNotActiveStyle =
     "flex items-center px-5 gap-3 text-black py-4 border-b-2 hover:text-blue border  transition-all duration-200 ease-in-out capitalize";
   const isActiveStyle =
-    "flex items-center text-red py-4 px-5 gap-3 font-extrabold border-r-2 border-black  transition-all duration-200 ease-in-out capitalize";
-  
-   const [isOpen, setIsOpen] = useState(false);
-   const toggleDrawer = () => {
-     setIsOpen((prevState) => !prevState);
+    "flex items-center py-4 px-5 gap-3 font-bold border-r-2 border-black upppercase transition-all duration-200 ease-in-out ";
+  const isLargeNotActiveStyle =
+    "flex items-center px-4 gap-3 hover:border-b-[1px] text-gray-100 py-3 hover:text-gray-300 transition-all upppercase";
+  const isLargeActiveStyle =
+    "flex items-center py-3 px-4 gap-3 font-semibold border-b-[1px] border-white text-white transition-all  upppercase";
 
-   };
-const navLinks = [
-  { to: "/", text: "Home" },
-  { to: "/about", text: "About" },
-  { to: "/property", text: "Properties" },
-  { to: "/contact", text: "Contact" },
-];
-
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+  const navLinks = [
+    { to: "/about", text: "About Us" },
+    { to: "/sustainability", text: "sustainability" },
+    { to: "/communities", text: "communities" },
+    { to: "/property", text: "OFFERS" },
+  ];
   return (
-    <div className="navbar z-10 fixed top-0 bg-black bg-opacity-50 h-20 ">
+    <div className="navbar  shadow-lg top-0 z-10 absolute  bg-black bg-opacity-50 h-20 ">
       <div className="navbar-start max-w-7xl mx-auto">
         <div>
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-white"
+              className="h-5 w-5 text-black"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,16 +57,16 @@ const navLinks = [
             open={isOpen}
             onClose={toggleDrawer}
             direction="left"
-            className=""
+            className="z-10"
           >
             <div>
               <div className="flex justify-center items-center mt-5">
                 <img src={logo} alt="logo of figTree" className="w-16" />
               </div>
-              <div className="list-none text-blue-400 ">
+              <div className="list-none ">
                 <ul>
                   {navLinks.map((link) => (
-                    <li key={link.to}>
+                    <li className="uppercase" key={link.to}>
                       <NavLink
                         to={link.to}
                         exact
@@ -75,23 +84,28 @@ const navLinks = [
           </Drawer>
         </div>
         <div className="navbar">
-          <a className="btn btn-ghost ">
-            <img src={logo} alt="logo of figTree" className="w-16" />
-            <span className="text-white hidden md:flex font-cinzel ">Figtree</span>
+          <a href="/" className="flex items-center ">
+            <img
+              src={logo}
+              alt="logo of figTree"
+              className="w-20 hidden md:flex items-center"
+            />
+
           </a>
         </div>
       </div>
       <div className=" hidden lg:flex">
-        <ul className="menu menu-horizontal text-white px-1">
+        <ul className="menu menu-horizontal  px-1">
           {/* navitems */}
-          <div className="list-none flex text-blue-400 ">
+          <div className="list-none flex  ">
             {navLinks.map((link, index) => (
-              <li key={index}>
+              <li className="uppercase" key={index}>
                 <NavLink
                   to={link.to}
                   exact
-                  className="flex items-center justify-center px-5 gap-3 hover:border-b-2 text-white hover:text-gray-200 transition-all duration-200 ease-in-out capitalize"
-                  isActiveStyle="flex items-center  px-5 gap-3 font-extrabold  border-white transition-all duration-200 ease-in-out capitalize"
+                  className={({ isActive }) =>
+                    isActive ? isLargeActiveStyle : isLargeNotActiveStyle
+                  }
                 >
                   {link.text}
                 </NavLink>
@@ -100,7 +114,23 @@ const navLinks = [
           </div>
         </ul>
       </div>
-      <div className="navbar-end"></div>
+      <div className="w-[75%] md:justify-end">
+        <div className="flex gap-2 justify-center items-center">
+          <div className="flex gap-2">
+            <button
+              onClick={handleWhatsApp}
+              className="flex btn-sm text-sm md:btn-md justify-center btn btn-success border-none text-white items-center"
+            >
+              <FaWhatsapp className="text-xl  text-white" />
+              <span className="hidden md:flex"> Whatsapp</span>
+            </button>
+
+            <div className="mr-5">
+             <Button></Button>
+            </div>
+          </div>{" "}
+        </div>
+      </div>
     </div>
   );
 };

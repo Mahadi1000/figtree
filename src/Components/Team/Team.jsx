@@ -1,4 +1,4 @@
-import { team } from "../../Utils/data";
+import { team } from "../../Utils/Data";
 import "./Team.css";
 
 const Team = () => {

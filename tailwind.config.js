@@ -2,13 +2,16 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    fontFamily: {
-      cinzel: ["Cinzel Decorative", "cursive"],
+    extend: {
+      fontFamily: { manrope: "Manrope", markoone: "Marko One" },
+      boxShadow: { bs: "0px 30px  30px 0px #91aebb33" },
     },
-    
+    fontFamily: {
+      cinzel: ["Cinzel", "cursive"],
+    },
   },
-  plugins: [require("daisyui")],
   daisyui: {
     themes: [],
   },
+  plugins: [require("daisyui"), require("@tailwindcss/forms")],
 };

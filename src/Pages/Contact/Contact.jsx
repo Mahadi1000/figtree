@@ -1,15 +1,22 @@
 import "./contact.css";
 import bg from "../../assets/aboutBg.jpg";
 import logo from "../../assets/logo.png";
-
-import image from "../../assets/contact.png"
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
+import { Helmet } from "react-helmet-async";
 const Contact = () => {
   return (
     <>
+      {" "}
+      <Helmet>
+        <title>FigTree Property | Home</title>
+        <meta
+          name="Find Your Dream Property in FigTree Property!"
+          content="We manage Better Living. Exceptional service for your real estate journey. Rent or buy in Doha-Qatar. Find your dream home today"
+        />
+      </Helmet>
       <div
-        className="w-full bg-cover  bg-no-repeat h-[60vh] flex  flex-col items-center justify-center "
+        className="w-full bg-cover bg-fixed bg-no-repeat h-[60vh] flex  flex-col items-center justify-center "
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.747)), url(${bg})`,
         }}

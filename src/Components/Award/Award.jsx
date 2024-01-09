@@ -1,6 +1,9 @@
 import CountUp, { useCountUp } from "react-countup";
-import { awards } from "../../Utils/data";
+import { awards } from "../../Utils/Data";
 import "./award.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 const Award = () => {
   useCountUp({
     ref: "counter",
@@ -10,11 +13,13 @@ const Award = () => {
   });
   return (
     <>
-      <section className="awards padding mt-8">
-        <div className="container">
+      <section className="awards  bg-fixed padding mt-8">
+        <div data-aos-duration="500" data-aos="zoom-in" className="container">
           <div>
-            <h1 className="font-cinzel text-3xl my-3">Our Awards</h1>
-            <p className="text-center text-xl text-white">
+            <h1 className="font-cinzel text-2xl md:text-3xl my-3">
+              Our Awards
+            </h1>
+            <p className="text-center text-lg md:text-xl text-wrap text-white">
               Over 1,24,000+ Happy User Bieng With Us Still They Love Our
               Services
             </p>
@@ -22,7 +27,10 @@ const Award = () => {
           <div className="content flex justify-center gap-8 flex-wrap">
             {awards.map((val, index) => (
               <div className="box" key={index}>
-                <div className="icon flex justify-center items-center">
+                <div
+                  className="icon md:w-[90px] md:h-[90px] w-[60px] h-[60px]
+                 flex justify-center items-center"
+                >
                   <span>{val.icon}</span>
                 </div>
                 <h1 className="text-3xl">

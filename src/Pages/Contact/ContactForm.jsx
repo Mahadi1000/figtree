@@ -1,7 +1,9 @@
 import { useState } from "react";
-
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
+  const form = useRef();
     const [gdprAgreement, setGdprAgreement] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -11,6 +13,21 @@ const ContactForm = () => {
   });
      const handleSubmit = (e) => {
        e.preventDefault();
+          emailjs
+            .sendForm(
+              "service_jtr1sh4",
+              "template_dxcut39",
+              form.current,
+              "i_meVwa85ciedtEeODXhB"
+            )
+            .then(
+              (result) => {
+                console.log(result.text);
+              },
+              (error) => {
+                console.log(error.text);
+              }
+            );
        // Add your logic to handle the form submission here
        console.log("Form submitted:", formData);
     };
@@ -23,6 +40,7 @@ const ContactForm = () => {
   return (
     <div className="lg:w-1/2 w-full bg-white shadow-xl p-4">
       <form
+        ref={form}
         className="w-full flex  lg:flex-wrap  bg-white"
         onSubmit={handleSubmit}
       >
@@ -120,6 +138,7 @@ const ContactForm = () => {
 
         <div className="flex w-full items-center justify-between">
           <button
+            value="send"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto py-2 px-10 mt-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
